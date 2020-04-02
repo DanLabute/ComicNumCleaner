@@ -18,9 +18,15 @@ namespace ComicNumCleaner
             string fileExtension;
             string destFileName;
             string containingFolder;
+            string[] currentDir;
 
             foreach (string s in fileList)
             {
+                currentDir = s.Split('\\');
+                if (currentDir[currentDir.Length-2] == "temp")
+                {
+                    continue;
+                }
                 containingFolder = Path.GetDirectoryName(s);
                 fileName = Path.GetFileNameWithoutExtension(s);
                 fileExtension = Path.GetExtension(s);
